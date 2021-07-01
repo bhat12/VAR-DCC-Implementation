@@ -1,14 +1,30 @@
 # VAR-DCC-Implementation
-Implementation of a Vector Auto Regressive Dynamic Conditional Correlation Model using oil ,gold sensex and exchange rate.This is a replication of 
+Implementation of a Vector Auto Regressive Dynamic Conditional Correlation Model using oil ,gold sensex and exchange rate.This is a replication of a 2016 Paper : 
+"Dynamic linkages among oil price, gold price, exchange rate, and stock market in India"
 
-## Introduction: ARCH & GARCH Models
+
+## Introduction : Vector Auto Regressive models 
+Vector autoregression (VAR) is a statistical model used to capture the relationship between multiple quantities as they change over time. VAR models generalize the single-variable (univariate) autoregressive model by allowing for multivariate time series. Each variable has an equation modelling its evolution over time. This equation includes the variable's lagged (past) values, the lagged values of the other variables in the model, and an error term.
+
+![image](https://user-images.githubusercontent.com/65502904/124171520-5044d480-dac6-11eb-9f15-2f8ca005e263.png)
+
+
+## ARCH & GARCH Models
 
  The autoregressive conditional heteroscedasticity (ARCH) model is a statistical model for time series data that describes the variance of the current error term or innovation as a function of the actual sizes of the previous time periods' error terms, often the variance is related to the squares of the previous innovations. 
  
  If an autoregressive moving average (ARMA) model is assumed for the error variance, the model is a generalized autoregressive conditional heteroskedasticity (GARCH) model.
+ 
+ ![image](https://user-images.githubusercontent.com/65502904/124171616-71a5c080-dac6-11eb-9c3e-ec2ba1ea819c.png)
+
+
+
 ### Multivariate GARCH Models
 
-In line with Engle (2002), the DCC-GARCH can be presented as follows:
+Dynamic Conditional Correlation (DCC) estimators are proposedwhich have the flexibility of univariate GARCH but not the complexity of multivariate GARCH.  These models, which parameterize the conditional correlations directly, arenaturally estimated in two steps – the first is a series of univariate GARCH estimates andthe second the correlation estimate. They estimate conditional correlations for different time series.
+
+![image](https://user-images.githubusercontent.com/65502904/124172414-6d2dd780-dac7-11eb-9f72-93189110acc3.png)
+
 
 
 
@@ -129,13 +145,26 @@ plot(as.xts(cor.s[2,4,]),main="Gold and Sensex",col='cyan')
 plot(as.xts(cor.s[3,4,]),main="Exchange rate and Sensex",col='orange')
 ```
 
+![DCC plot with Standard GARCH](https://user-images.githubusercontent.com/65502904/124167675-e0cce600-dac1-11eb-9bd6-acb75f110f6a.png)
 
 
 
 
+
+### Results and Conclusions :
+ The dynamic conditional correlations between crude-gold and inr-sensex are always in the positive zone 
+ 
+ Brent-Exchange_rate and Brent-Sensex correlation can be seen to higher in the 2008–2013 period, indicating higher correlations during the financial crisis and beyond period.
+ 
+ Gold-Exchange_rate and Gold-Sensex display short periods of negative correlation, which might be indication of investors shifting from risky assets such as stocks to
+ the perceived safety of gold or can use it for hedging.
 
 
 
 
 ### References
-PennState: Statistics Online Courses. 2020. ARCH/GARCH Models | STAT 510. [online] Available at: <https://online.stat.psu.edu/stat510/lesson/11/11.1>.
+https://ideas.repec.org/a/eee/jrpoli/v49y2016icp179-185.html
+https://en.wikipedia.org/wiki/Autoregressive_conditional_heteroskedasticity
+
+Introductory Economics for Finance, Chris Brooks
+
